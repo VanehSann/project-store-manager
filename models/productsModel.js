@@ -30,7 +30,7 @@ const productsModel = {
   },
   deleteProduct: async (id) => {
     const sql = 'delete from StoreManager.products where id = ?;';
-    const [[product]] = await connection.query(sql, [id]);
+    const [product] = await connection.query(sql, [id]);
     return product;
   },
   getSearchProducts: async (q, name) => {
