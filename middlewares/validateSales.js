@@ -1,10 +1,10 @@
 const validateSales = (request, response, next) => {
   const { productId, quantity } = request.body;
-  if (!quantity || quantity.length === 0) {
+  if (!quantity) {
     // req06 - deveria dar erro aqui?
     return response.status(400).json({ message: '"quantity" is required' });
   }
-  if (!productId || productId.length === 0) {
+  if (!productId) {
     return response.status(400).json({ message: '"productId" is required' });
   }
   if (productId === null) {
