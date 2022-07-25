@@ -23,7 +23,7 @@ const salesModel = {
   },
   addNewSale: async (productId, quantity) => {
     // req06 - O que eu tenho que inserir exatamente? 
-    const sql = `insert into StoreManager.sales (productId, quantity) values (?, ?);`;
+    const sql = 'insert into StoreManager.sales (productId, quantity) values (?, ?);';
     const [{ insertId }] = await connection.query(sql, [productId, quantity]);
     return {
       id: insertId,
