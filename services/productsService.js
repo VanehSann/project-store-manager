@@ -22,8 +22,8 @@ const productsService = {
     const product = await productsModel.deleteProduct(id);
     return product;
   },
-  getSearchProducts: async (q, name) => {
-    const products = await productsModel.getSearchProducts(q, name);
+  getSearchProducts: async (q) => {
+    const products = await productsModel.getSearchProducts(q);
     return products;
   },
 };

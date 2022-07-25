@@ -11,14 +11,14 @@ describe("18 - Crie endpoint products/search?q=searchTerm", () => {
 
   it("Será validado que é possível buscar um produto pelo name", async () => {
     const { status, json } = await frisby.get(`${url}/products/search?q=Martelo`);
-
+    console.log(status, json)
     expect(status).toBe(200);
     expect(json).toEqual(productSearchNameResponse);
   });
 
   it("Será validado que é possível buscar todos os produtos quando passa a busca vazia", async () => {
     const { status, json } = await frisby.get(`${url}/products/search?q=`);
-
+    console.log(status, json)
     expect(status).toBe(200);
     expect(json).toEqual(allProductsResponse);
   });

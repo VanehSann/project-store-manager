@@ -33,9 +33,12 @@ const productsModel = {
     const [product] = await connection.query(sql, [id]);
     return product;
   },
-  getSearchProducts: async (q, name) => {
-    const sql = 'select * from StoreManager.products where name = ?;'; // name like %?%;
-    const [products] = await connection.query(sql, [q, name]);
+  getSearchProducts: async (q) => {
+    const searchName = `%${q}%`;
+    const sql = 'select id, name from StoreManager.products where name like ?;'; // name like %?%;
+    const [products] = await connection.query(sql, [searchName]);
+    // aperfeiçoado com ajuda da thread 
+    // https://trybecourse.slack.com/archives/C02L83FCV4K/p1656961494902899?thread_ts=1656957008.376629&cid=C02L83FCV4K
     return products;
   },
 };

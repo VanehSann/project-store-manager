@@ -61,8 +61,7 @@ const productsController = {
   getSearchProducts: async (request, response) => {
     try {
       const { q } = request.query;
-      const { name } = request.body;
-      const products = await productsService.getSearchProducts(q, name);
+      const products = await productsService.getSearchProducts(q);
       response.status(200).json(products);
     } catch (error) {
       response.status(500).json({ message: error.message });
