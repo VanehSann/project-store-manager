@@ -20,6 +20,14 @@ const productsModel = {
       name,
     };
   },
+  updateNewProduct: async (id, name) => {
+    const sql = 'update StoreManager.products set name = ? where id = ?;';
+    const [[product]] = await connection.query(sql, [name, id]);
+    return {
+      id: product,
+      name,
+    };
+  },
 
 };
 

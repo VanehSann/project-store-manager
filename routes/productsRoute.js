@@ -9,5 +9,6 @@ const router = Router();
 router.get('/', productsController.getAllProducts);
 router.post('/', validateNewProductName, productsController.addNewProduct);
 router.get('/:id', productsController.getProductById);
+router.put('/:id', productsController.updateNewProduct);
 
 module.exports = router;

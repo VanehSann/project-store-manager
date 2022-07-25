@@ -31,6 +31,20 @@ const productsController = {
       response.status(500).json({ message: error.message });
     }
   },
+  updateNewProduct: async (request, response) => {
+    try {
+      const id = Number(request.params.id);
+      const { name } = request.body;
+      const product = await productsService.getProductById(id);
+      if (!product) {
+        return response.status(404).json({ message: 'Product not found' });
+      }
+      const updatedProduct = await productsService.updateNewProduct(id, name);
+      response.status(200).json(updatedProduct);
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
+  }, 
 
 };
 
