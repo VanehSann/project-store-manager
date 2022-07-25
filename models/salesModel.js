@@ -11,14 +11,13 @@ const salesModel = {
     const [sales] = await connection.query(sql);
     return sales;
   },
-  getProductById: async (id) => {
+  getSaleById: async (id) => {
     const sql = `select a.date, b.product_id as productId, b.quantity
  from StoreManager.sales as a
  inner join StoreManager.sales_products as b
  on a.id = b.sale_id
- where id = ?
- order by saleId, productId;`;
-    const [[sale]] = await connection.query(sql, [id]);
+ where id = ?;`;
+    const [sale] = await connection.query(sql, [id]);
     return sale;
   },
   addNewSale: async (productId, quantity) => {

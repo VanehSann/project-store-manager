@@ -26,8 +26,10 @@ const salesController = {
     // req06 - o que exatamente é pra fazer?
     try {
       const { productId, quantity } = request.body;
+      console.log(productId, quantity, 'a')
       const sale = await salesService.addNewSale(productId, quantity);
       response.status(201).json(sale);
+      console.log(sale, 'b')
     } catch (error) {
       response.status(500).json({ message: error.message });
     }

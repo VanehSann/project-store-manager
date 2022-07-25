@@ -9,14 +9,14 @@ describe("08 - Crie endpoints para listar vendas", () => {
   afterAll(async () => await connect().end());
 
   it("Será validado o acesso ao endpoint através do caminho `/sales`", async () => {
-    const { status } = await frisby.get(`${url}/sales`);
-
+    const { status, json } = await frisby.get(`${url}/sales`);
+console.log(status, json)
     expect(status).toBeLessThan(400);
   });
 
   it("Será validado que é possível listar todas as vendas", async () => {
     const { status, json } = await frisby.get(`${url}/sales`);
-
+    console.log(status, json)
     expect(status).toBe(200);
     expect(json.length).toBe(3);
     expect(json[0]).toHaveProperty("saleId");
@@ -42,14 +42,14 @@ describe("08 - Crie endpoints para listar vendas", () => {
 
   it("Será validado que não é possível listar uma venda que não existe", async () => {
     const { status, json } = await frisby.get(`${url}/sales/999`);
-
+    console.log(status, json)
     expect(status).toBe(404);
     expect(json.message).toEqual("Sale not found");
   });
 
   it("Será validado que é possível listar uma venda específica com sucesso", async () => {
     const { status, json } = await frisby.get(`${url}/sales/1`);
-
+    console.log(status, json)
     expect(status).toBe(200);
     expect(json.length).toBe(2);
     expect(json[0]).not.toHaveProperty("id");
