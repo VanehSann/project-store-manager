@@ -1,5 +1,5 @@
 const validateNewProductName = (request, response, next) => {
-  const name = request.body;
+  const { name } = request.body;
   if (!name) {
     return response.status(400).json({
       message: '"name" is required',
