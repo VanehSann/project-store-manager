@@ -18,6 +18,10 @@ const productsService = {
     const product = await productsModel.updateNewProduct(id, name);
     return product;
   },
+  deleteProduct: async (id) => {
+    const product = await productsModel.deleteProduct(id);
+    return product;
+  },
 };
 
 module.exports = productsService;

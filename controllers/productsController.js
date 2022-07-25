@@ -45,6 +45,19 @@ const productsController = {
       response.status(500).json({ message: error.message });
     }
   }, 
+  deleteProduct: async (request, response) => {
+    try {
+      const id = Number(request.params.id);
+      const product = await productsService.getProductById(id);
+      if (!product) {
+        return response.status(404).json({ message: 'Product not found' });
+      }
+      const deleteProduct = await productsService.deleteProduct(id);
+      response.status(204).json(deleteProduct);
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
+  }, 
 
 };
 
