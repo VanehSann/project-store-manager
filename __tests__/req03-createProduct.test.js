@@ -12,7 +12,7 @@ describe("03 - Crie endpoint para cadastrar produtos", () => {
 
   it("Será validado que é possível cadastrar um produto com sucesso", async () => {
     const { status, json } = await frisby.post(`${url}/products`, rightProductBody);
-
+    console.log(status, json, productCreateResponse, rightProductBody, url)
     expect(status).toBe(201);
     expect(json).toEqual(productCreateResponse);
   });

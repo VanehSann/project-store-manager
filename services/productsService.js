@@ -10,6 +10,10 @@ const productsService = {
     const product = await productsModel.getProductById(id);
     return product;
   },
+  addNewProduct: async (name) => {
+    const product = await productsModel.addNewProduct(name);
+    return product;
+  }
 
 };
 
