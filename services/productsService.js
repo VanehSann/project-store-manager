@@ -13,7 +13,7 @@ const productsService = {
   addNewProduct: async (name) => {
     const product = await productsModel.addNewProduct(name);
     return product;
-  }
+  },
 
 };
 

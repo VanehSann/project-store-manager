@@ -17,9 +17,9 @@ const productsModel = {
     const [{ insertId }] = await connection.query(sql, [name]);
     return {
       id: insertId,
-      name
+      name,
     };
-  }
+  },
 
 };
 

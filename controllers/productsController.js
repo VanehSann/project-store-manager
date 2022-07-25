@@ -1,6 +1,5 @@
 const productsService = require('../services/productsService');
 
-
 const productsController = {
 
   getAllProducts: async (_request, response) => {
@@ -33,7 +32,7 @@ const productsController = {
     } catch (error) {
       response.status(500).json({ message: error.message });
     }
-  }
+  },
 
 };
 
