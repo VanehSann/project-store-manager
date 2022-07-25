@@ -22,6 +22,10 @@ const productsService = {
     const product = await productsModel.deleteProduct(id);
     return product;
   },
+  getSearchProducts: async (q, name) => {
+    const products = await productsModel.getSearchProducts(q, name);
+    return products;
+  },
 };
 
 module.exports = productsService;

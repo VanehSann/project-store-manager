@@ -28,10 +28,15 @@ const productsModel = {
       name,
     };
   },
-  updateNewProduct: async (id) => {
+  deleteProduct: async (id) => {
     const sql = 'delete from StoreManager.products where id = ?;';
     const [[product]] = await connection.query(sql, [id]);
     return product;
+  },
+  getSearchProducts: async (q, name) => {
+    const sql = 'select * from StoreManager.products where name = ?;'; // name like %?%;
+    const [products] = await connection.query(sql, [q, name]);
+    return products;
   },
 };
 

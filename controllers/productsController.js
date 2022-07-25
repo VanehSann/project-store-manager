@@ -58,7 +58,16 @@ const productsController = {
       response.status(500).json({ message: error.message });
     }
   }, 
-
+  getSearchProducts: async (request, response) => {
+    try {
+      const q = request.query.q;
+      const name = request.body.name;
+      const products = await productsService.getSearchProducts(q, name);
+      response.status(200).json(products);
+    } catch (error) {
+      response.status(500).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = productsController;
