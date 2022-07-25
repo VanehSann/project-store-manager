@@ -11,28 +11,28 @@ describe("10 - Crie endpoint para atualizar um produto", () => {
 
   it("Será validado que não é possível realizar operações em um produto sem o campo name", async () => {
     const { status, json } = await frisby.put(`${url}/products/1`, wrongProductBody);
-
+    console.log(status, json)
     expect(status).toBe(400);
     expect(json.message).toEqual("\"name\" is required");
   });
 
   it("Será validado que não é possível realizar operações em um produto com o campo name menor que 5 caracteres", async () => {
     const { status, json } = await frisby.put(`${url}/products/1`, wrongSizeProductBody);
-
+    console.log(status, json)
     expect(status).toBe(422);
     expect(json.message).toEqual("\"name\" length must be at least 5 characters long");
   });
 
   it("Será validado que não é possível alterar um produto que não existe", async () => {
     const { status, json } = await frisby.put(`${url}/products/999`, productUpdateBody);
-
+    console.log(status, json)
     expect(status).toBe(404);
     expect(json.message).toEqual("Product not found");
   });
 
   it("Será validado que é possível alterar um produto com sucesso", async () => {
     const { status, json } = await frisby.put(`${url}/products/1`, productUpdateBody);
-
+    console.log(status, json)
     expect(status).toBe(200);
     expect(json).toHaveProperty("id");
     expect(json).toHaveProperty("name");
@@ -42,7 +42,7 @@ describe("10 - Crie endpoint para atualizar um produto", () => {
 
   it("Será validado que o produto foi alterado no banco de dados", async () => {
     const { status, json } = await frisby.get(`${url}/products/1`);
-
+    console.log(status, json)
     expect(status).toBe(200);
     expect(json.name).toEqual("Machado do Thor Stormbreaker");
   });

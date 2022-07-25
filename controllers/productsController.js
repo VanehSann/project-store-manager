@@ -35,14 +35,14 @@ const productsController = {
     try {
       const id = Number(request.params.id);
       const { name } = request.body;
-      console.log(name)
+      console.log('name', name)
       const product = await productsService.getProductById(id);
-      console.log(product)
+      console.log('product', product)
       if (!product) {
         return response.status(404).json({ message: 'Product not found' });
       }
       const updatedProduct = await productsService.updateNewProduct(id, name);
-      console.log(updatedProduct)
+      console.log('upPro', updatedProduct)
       response.status(200).json(updatedProduct);
     } catch (error) {
       response.status(500).json({ message: error.message });
