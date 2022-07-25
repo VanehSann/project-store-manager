@@ -4,9 +4,11 @@ const validateSales = (request, response, next) => {
     return response.status(400).json({ message: '"productId" is required' });
   }
   if (productId === undefined) {
+    // req06 - deveria dar erro aqui?
     return response.status(400).json({ message: 'Product not found' });
   }
   if (!quantity) {
+    // req06 - deveria dar erro aqui?
     return response.status(400).json({ message: '"quantity" is required' });
   }
   if (quantity <= 0) {
