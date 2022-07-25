@@ -60,8 +60,8 @@ const productsController = {
   }, 
   getSearchProducts: async (request, response) => {
     try {
-      const q = request.query.q;
-      const name = request.body.name;
+      const { q } = request.query;
+      const { name } = request.body;
       const products = await productsService.getSearchProducts(q, name);
       response.status(200).json(products);
     } catch (error) {
