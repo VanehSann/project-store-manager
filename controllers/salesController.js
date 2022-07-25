@@ -49,8 +49,8 @@ const salesController = {
   deleteSale: async (request, response) => {
     try {
       const id = Number(request.params.id);
-      const sale = await salesService.deleteSale(id);
-      if (!sale) {
+      const sale = await salesService.getSaleById(id);
+      if (!sale || sale.length === 0) {
         return response.status(404).json({ message: 'Sale not found' });
       }
       const deleteSale = await salesService.deleteSale(id);

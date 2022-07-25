@@ -44,8 +44,10 @@ const salesModel = {
   },
   deleteSale: async (id) => {
     const sql = 'delete from StoreManager.sales where id = ?;';
-    const [[product]] = await connection.query(sql, [id]);
-    return product;
+    await connection.query(sql, [id]);
+    const sql2 = 'delete from StoreManager.sales_products where sale_id = ?;';
+    await connection.query(sql2, [id]);
+    return id;
   },
 
 };
