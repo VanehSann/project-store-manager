@@ -19,20 +19,21 @@ const salesModel = {
  where id = ?
  order by saleId, productId;`;
     const [[sale]] = await connection.query(sql, [id]);
-    return sale
+    return sale;
   },
-  addNewSale: async (productsId, quantity) => {
+  addNewSale: async (productId, quantity) => {
     // req06 - O que eu tenho que inserir exatamente? 
-    const sql = 'insert into StoreManager.sales (productsId, quantity) values (?, ?) and StoreManager.sales_products (productsId, quantity) values (?, ?);';
-    const [{ insertId }] = await connection.query(sql, [productsId, quantity]);
+    const sql = `insert into StoreManager.sales (productId, quantity) values (?, ?)
+     and StoreManager.sales_products(productsId, quantity) values(?, ?); `;
+    const [{ insertId }] = await connection.query(sql, [productId, quantity]);
     return {
       id: insertId,
       itemsSold: [
         {
           productId,
-          quantity
-        }
-      ]
+          quantity,
+        },
+      ],
     };
   },
 
