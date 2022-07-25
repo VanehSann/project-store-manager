@@ -7,7 +7,7 @@ const validateNewProductName = require('../middlewares/validateName');
 const router = Router();
 
 router.get('/', productsController.getAllProducts);
-router.get('/:id', productsController.getProductById);
 router.post('/', validateNewProductName, productsController.addNewProduct);
+router.get('/:id', productsController.getProductById);
 
 module.exports = router;

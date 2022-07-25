@@ -24,8 +24,6 @@ const productsController = {
   },
   addNewProduct: async (request, response) => {
     try {
-      // req03 Erro - 404 undefined 
-      // Json está undefined - já usei o app.use(express.json()) e nada
       const { name } = request.body;
       const product = await productsService.addNewProduct(name);
       response.status(201).json(product);
