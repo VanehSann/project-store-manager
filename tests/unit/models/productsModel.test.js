@@ -37,5 +37,10 @@ describe('Testando models/productsModel', () => {
       console.log(response)
       expect(typeof response).to.be.equal('object');
     });
+    it('testa getSearchProducts', async () => {
+      const response = await productsModel.getSearchProducts();
+      console.log(response, '0')
+      expect(typeof response).to.be.equal('object');
+    });
   });
 });

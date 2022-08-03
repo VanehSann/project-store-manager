@@ -196,6 +196,7 @@ describe('Testando camada controller/salesController', () => {
     // it - tests
     it('1status 200', async () => {
       await salesController.updateNewSale(request, response);
+      expect(response.json.calledWith(sinon.match.object)).to.be.equal(true);
       expect(response.status.calledWith(200)).to.be.equal(false); // true
     });
     it('2status 500', async () => {

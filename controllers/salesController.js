@@ -34,13 +34,9 @@ const salesController = {
   },
   updateNewSale: async (request, response) => {
     try {
+      const saleArr = request.body;
       const id = Number(request.params.id);
-      const { productId, quantity } = request.body;
-      const sale = await salesService.getProductById(id);
-      if (!sale) {
-        return response.status(404).json({ message: 'Sale not found' });
-      }
-      const updatedSale = await salesService.updateNewProduct(id, productId, quantity);
+      const updatedSale = await salesService.updateNewProduct(id, saleArr);
       response.status(200).json(updatedSale);
     } catch (error) {
       response.status(500).json({ message: error.message });
