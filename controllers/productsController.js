@@ -3,12 +3,9 @@ const productsService = require('../services/productsService');
 const productsController = {
 
   getAllProducts: async (_request, response) => {
-    try {
+    
       const products = await productsService.getAllProducts();
       response.json(products);
-    } catch (error) {
-      response.status(500).json({ message: error.message });
-    }
   },
   getProductById: async (request, response) => {
     try {

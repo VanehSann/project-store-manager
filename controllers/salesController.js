@@ -3,12 +3,8 @@ const salesService = require('../services/salesService');
 const salesController = {
  
   getAllSales: async (_request, response) => {
-    try {
       const sales = await salesService.getAllSales();
       response.json(sales);
-    } catch (error) {
-      response.status(500).json({ message: error.message });
-    }
   },
   getSaleById: async (request, response) => {
     try {
@@ -23,24 +19,12 @@ const salesController = {
     }
   },
   addNewSale: async (request, response) => {
-    // req06 - o que exatamente é pra fazer?
-    try {
       const { productId, quantity } = request.body;
       const sale = await salesService.addNewSale(productId, quantity);
       response.status(201).json(sale);
-    } catch (error) {
-      response.status(500).json({ message: error.message });
-    }
   },
-  updateNewSale: async (request, response) => {
-    try {
-      const saleArr = request.body;
-      const id = Number(request.params.id);
-      const updatedSale = await salesService.updateNewProduct(id, saleArr);
-      response.status(200).json(updatedSale);
-    } catch (error) {
-      response.status(500).json({ message: error.message });
-    }
+  updateNewSale: async (_request, _response) => {
+  
   },
   deleteSale: async (request, response) => {
     try {
