@@ -20,28 +20,28 @@ const salesModel = {
     const [sale] = await connection.query(sql, [id]);
     return sale;
   },
-  addNewSale: async (productId, quantity) => {
-    // req06 - O que eu tenho que inserir exatamente? 
-    const sql = 'insert into StoreManager.sales (productId, quantity) values (?, ?);';
-    const [{ insertId }] = await connection.query(sql, [productId, quantity]);
-    return {
-      id: insertId,
-      itemsSold: [
-        {
-          productId,
-          quantity,
-        },
-      ],
-    };
-  },
-  updateNewSale: async (id, productId, quantity) => {
-    const sql = 'update StoreManager.sales set productId = ? where id = ?;';
-    await connection.query(sql, [productId, id]);
-    return {
-      productId,
-      quantity,
-    };
-  },
+  // addNewSale: async (productId, quantity) => {
+  //   // req06 - O que eu tenho que inserir exatamente? 
+  //   const sql = 'insert into StoreManager.sales (productId, quantity) values (?, ?);';
+  //   const [{ insertId }] = await connection.query(sql, [productId, quantity]);
+  //   return {
+  //     id: insertId,
+  //     itemsSold: [
+  //       {
+  //         productId,
+  //         quantity,
+  //       },
+  //     ],
+  //   };
+  // },
+  // updateNewSale: async (id, productId, quantity) => {
+  //   const sql = 'update StoreManager.sales set productId = ? where id = ?;';
+  //   await connection.query(sql, [productId, id]);
+  //   return {
+  //     productId,
+  //     quantity,
+  //   };
+  // },
   deleteSale: async (id) => {
     const sql = 'delete from StoreManager.sales where id = ?;';
     await connection.query(sql, [id]);
