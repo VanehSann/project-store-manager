@@ -286,6 +286,7 @@ describe("Testando camada controller/productsController", () => {
     // before and after
     before(() => {
       request.body = {};
+      request.query = {}
 
       response.status = sinon.stub().returns(response);
       response.json = sinon.stub().returns();
@@ -318,15 +319,20 @@ describe("Testando camada controller/productsController", () => {
     });
     it("5status 200", async () => {
       await productsController.getSearchProducts(request, response);
-      expect(response.status.calledWith(200)).to.be.equal(false); // true
+      expect(response.status.calledWith(200)).to.be.equal(true); // true
+    });
+    it("ooo", async () => {
+      await productsController.getSearchProducts(request, response);
+      expect(response.json.calledWith(sinon.match.array)).to.be.equal(true);
+      expect(response.status.calledWith(500)).to.be.equal(true); // true
     });
     it("6status 500", async () => {
       await productsController.updateNewProduct(request, response);
-      expect(response.status.calledWith(500)).to.be.equal(true); // true
+      expect(response.json.calledWith(sinon.match.object)).to.be.equal(true);// true
     });
     it("7status 200", async () => {
       await productsController.addNewProduct(request, response);
-      expect(response.status.calledWith(200)).to.be.equal(false); // true
+      expect(response.status.calledWith(200)).to.be.equal(true); // true
     });
   });
 });
