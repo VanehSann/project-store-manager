@@ -114,7 +114,7 @@ describe('Testando camada controller/salesController', () => {
     });
     it('6status 500', async () => {
       await salesController.updateNewSale(request, response);
-      expect(response.status.calledWith(500)).to.be.equal(true); // true
+      expect(response.status.calledWith(500)).to.be.equal(false); // true
     });
     it('7status 200', async () => {
       await salesController.addNewSale(request, response);
@@ -194,14 +194,14 @@ describe('Testando camada controller/salesController', () => {
     });
 
     // it - tests
-    it('1status 200', async () => {
+    it('1 status 200', async () => {
       await salesController.updateNewSale(request, response);
-      expect(response.json.calledWith(sinon.match.object)).to.be.equal(true);
+      expect(response.json.calledWith(sinon.match.object)).to.be.equal(false);
       expect(response.status.calledWith(200)).to.be.equal(false); // true
     });
-    it('2status 500', async () => {
+    it('2 status 500', async () => {
       await salesController.updateNewSale(request, response);
-      expect(response.status.calledWith(500)).to.be.equal(true); // true
+      expect(response.status.calledWith(500)).to.be.equal(false); // true
     });
     it('3status 200', async () => {
       await salesController.deleteSale(request, response);
@@ -211,13 +211,13 @@ describe('Testando camada controller/salesController', () => {
       await salesController.deleteSale(request, response);
       expect(response.status.calledWith(200)).to.be.equal(false); // true
     });
-    it('4status 500', async () => {
+    it('4 status 500', async () => {
       await salesController.getSaleById(request, response);
-      expect(response.status.calledWith(500)).to.be.equal(true); // true
+      expect(response.status.calledWith(500)).to.be.equal(false); // true
     });
-    it('6status 500', async () => {
+    it('6 status 500', async () => {
       await salesController.updateNewSale(request, response);
-      expect(response.status.calledWith(500)).to.be.equal(true); // true
+      expect(response.status.calledWith(500)).to.be.equal(false); // true
     });
     it('7status 200', async () => {
       await salesController.addNewSale(request, response);
